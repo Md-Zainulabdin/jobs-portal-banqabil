@@ -44,7 +44,7 @@ export const registerUser = async (req, res) => {
 
         return res.status(201).json({ msg: "User created successfully" });
     } catch (error) {
-        console.log(`User-Register-Error`);
+        console.log(`User-Register-Error`, error);
         return res
             .status(500)
             .json({ msg: "An error occured while registering user" });
@@ -65,7 +65,7 @@ export const removeUser = async (req, res) => {
 
         return res.status(200).json({ msg: "User deleted!" });
     } catch (error) {
-        console.log(`User-Removed-Error`);
+        console.log(`User-Removed-Error`, error);
         return res
             .status(500)
             .json({ msg: "An error occured while removing user" });
@@ -108,7 +108,7 @@ export const updateUser = async (req, res) => {
 
         return res.status(200).json({ msg: "User Updated!", user });
     } catch (error) {
-        console.log(`User-Updated-Error`);
+        console.log(`User-Updated-Error`, error);
         return res
             .status(500)
             .json({ msg: "An error occured while updating user" });
@@ -120,7 +120,7 @@ export const getAllUser = async (req, res) => {
         const users = await User.find({}).select("name email");
         return res.status(200).json({ users });
     } catch (error) {
-        console.log(`User-Get-Error`);
+        console.log(`User-Get-Error`, error);
         return res.status(500).json({ msg: "An error occured while getting user" });
     }
 };
