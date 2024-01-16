@@ -5,7 +5,8 @@ import swaggerUi from "swagger-ui-express";
 // import swaggerJSDoc from "swagger-jsdoc";
 import YAML from "yamljs"
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
+const __dirname = path.resolve();
 
 // ...
 
@@ -16,8 +17,8 @@ const currentModuleDir = dirname(currentModulePath);
 
 dotenv.config();
 
+// Initiliza express app
 const app = express();
-
 
 // middleware to parse data coming from frontend
 app.use(cors({
@@ -66,9 +67,14 @@ import userRoutes from "./routes/user.routes.js";
 import authRoutes from "./routes/auth.routes.js"
 import jobRoutes from "./routes/job.routes.js"
 
-app.get("/", (req, res) => {
-    return res.status(200).send("Welcome to Job Portal")
-})
+
+//Frotend for job-application
+
+app.get('/', express.static(path.join(__dirname, "web")))
+app.use('/', express.static(path.join(__dirname, "web")))
+
+// other Api Routes
+
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", authRoutes);
 app.use("/api/v1", jobRoutes)
