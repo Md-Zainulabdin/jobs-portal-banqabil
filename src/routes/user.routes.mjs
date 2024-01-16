@@ -4,9 +4,9 @@ import {
     registerUser,
     removeUser,
     updateUser
-} from "../controllers/user.controller.js";
+} from "../controllers/user.controller.mjs";
 import { check } from "express-validator";
-import auth from "../middlewares/auth.js"
+import auth from "../middlewares/auth.mjs"
 
 
 const router = express.Router();

@@ -1,5 +1,5 @@
-import { verifyEmail } from "../helpers/index.js";
-import User from "../models/user.model.js";
+import { verifyEmail } from "../helpers/index.mjs";
+import User from "../models/user.model.mjs";
 import { validationResult } from "express-validator"
 import bcrypt from "bcryptjs"
 

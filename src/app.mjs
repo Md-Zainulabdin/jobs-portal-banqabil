@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import swaggerUi from "swagger-ui-express";
 // import swaggerJSDoc from "swagger-jsdoc";
 import YAML from "yamljs"
@@ -14,8 +13,6 @@ const __dirname = path.resolve();
 const currentModuleURL = import.meta.url;
 const currentModulePath = fileURLToPath(currentModuleURL);
 const currentModuleDir = dirname(currentModulePath);
-
-dotenv.config();
 
 // Initiliza express app
 const app = express();
@@ -63,15 +60,15 @@ const swaggerJSDoc = YAML.load(currentModuleDir + '/api.yaml');
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerJSDoc));
 
 // routes imports
-import userRoutes from "./routes/user.routes.js";
-import authRoutes from "./routes/auth.routes.js"
-import jobRoutes from "./routes/job.routes.js"
+import userRoutes from "./routes/user.routes.mjs";
+import authRoutes from "./routes/auth.routes.mjs"
+import jobRoutes from "./routes/job.routes.mjs"
 
 
 //Frotend for job-application
 
-app.get('/', express.static(path.join(__dirname, "web")))
-app.use('/', express.static(path.join(__dirname, "web")))
+app.get('/', express.static(path.join(__dirname, "public")))
+app.use('/', express.static(path.join(__dirname, "public")))
 
 // other Api Routes
 

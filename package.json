@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.mjs",
-  "type": "module",
   "scripts": {
     "start": "node server.mjs",
     "dev": "nodemon server.mjs"
